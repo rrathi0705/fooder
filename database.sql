@@ -17,7 +17,8 @@ CREATE TABLE users(
 	user_id int(100) Auto_increment primary key,
 	user_name varchar(50),
 	user_email varchar(50),
-	user_password varchar(100)
+	user_password varchar(100),
+	user_haverest int(100) DEFAULT 0
 );
 
 CREATE table orders(
