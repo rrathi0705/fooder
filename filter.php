@@ -8,7 +8,7 @@
 	if(mysqli_num_rows($result)>0){
 		while($row = mysqli_fetch_array($result)){
 			$cuisineAvail=$row['rest_cuisine'];
-			$ans=split(',',$cuisineAvail);
+			$ans=explode(',',$cuisineAvail);
 			for ($i=0; $i < sizeof($ans); $i++) { 
 				if($ans[$i] == $criteria){
 					$id.='rest_id = "'.$row['rest_id'].'" OR ';
