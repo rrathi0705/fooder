@@ -27,6 +27,7 @@
 			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $name;?>
 			<span class="caret"></span></button>
 			<ul class="dropdown-menu">
+				<li><a href="userLoggedIn.php">Home</a></li>
 				<li><a href="orderHistory.php">Order History</a></li>
 			    <li><a href="AddRestaurant.php">Add Restaurant</a></li>
 			    <li><a href="ManageRestaurant.php">Manage Restaurant</a></li>

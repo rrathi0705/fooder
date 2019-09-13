@@ -94,3 +94,8 @@ header h2{
 	right: 10%;
 	top: 30px;
 }
+.dropdown1 button {
+    position: absolute;
+    top: 6px;
+    right: 35px;
+}

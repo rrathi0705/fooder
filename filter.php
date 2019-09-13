@@ -1,4 +1,7 @@
 <?php
+	session_start();
+	@$name = $_SESSION['user_name'];
+	@$email = $_SESSION['user_email'];
 	include 'includes/dbh.inc.php';
 	$criteria = $_GET['criteria'];
 	$sql = "SELECT * from restaurants";
@@ -8,7 +11,7 @@
 	if(mysqli_num_rows($result)>0){
 		while($row = mysqli_fetch_array($result)){
 			$cuisineAvail=$row['rest_cuisine'];
-			$ans=split(',',$cuisineAvail);
+			$ans=explode(',',$cuisineAvail);
 			for ($i=0; $i < sizeof($ans); $i++) { 
 				if($ans[$i] == $criteria){
 					$id.='rest_id = "'.$row['rest_id'].'" OR ';
@@ -46,8 +49,22 @@
 <body>
 	<header>
 		<h2>Fooder</h2>
-		<a href="logsignup/login.php" class="loginbutton btn" data-toggle="modal" data-target="#login">Login</a>
-		<a href="logsignup/signup.php" class="btn signupbutton" data-toggle="modal" data-target="#signup">Create an account</a>
+		<?php if($name==""){?>
+			<a href="logsignup/login.php" class="loginbutton btn" data-toggle="modal" data-target="#login">Login</a>
+			<a href="logsignup/signup.php" class="btn signupbutton" data-toggle="modal" data-target="#signup">Create an account</a>
+		<?php }else{?>
+			<div class="dropdown1">
+			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $name;?>
+			<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+				<li><a href="userLoggedIn.php">Home</a></li>
+				<li><a href="orderHistory.php">Order History</a></li>
+			    <li><a href="AddRestaurant.php">Add Restaurant</a></li>
+			    <li><a href="<?php if($haverest==1){ echo "ManageRestaurant.php";}else{ echo "#";}?>">Manage Restaurant</a></li>
+			    <li><a href="logsignup/logout.php">Logout</a></li>
+			</ul>
+		</div>
+		<?php }?>
 	</header>
 	<div class="container">
 		<h2 style="margin-top: 1%;">Order Food Online from your favourite outlet</h2>

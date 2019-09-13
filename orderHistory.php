@@ -39,6 +39,7 @@
 			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $name;?>
 			<span class="caret"></span></button>
 			<ul class="dropdown-menu">
+				<li><a href="userLoggedIn.php">Home</a></li>
 				<li><a href="orderHistory.php">Order History</a></li>
 			    <li><a href="AddRestaurant.php">Add Restaurant</a></li>
 			    <li><a href="<?php if($haverest==1){ echo "ManageRestaurant.php";}else{ echo "#";}?>">Manage Restaurant</a></li>
@@ -56,7 +57,7 @@
 					$item=$rows['order_item'];
 					$cost =$rows['cost'];
 				$arr = array();
-				$arr = split(',', $item);?>
+				$arr = explode(',', $item);?>
 				<div class="card" style="width: 500px;">
 				<h3><?php echo $rest_name; ?></h3><?php
 				for($i=0;$i<sizeof($arr);$i++)
